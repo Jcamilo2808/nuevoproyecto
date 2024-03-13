@@ -1,28 +1,24 @@
 import streamlit as st
-import pandas as pd
-import subprocess
 
 def main():
-    st.title('Formulario de Información de Clientes')
+    st.title('Formulario de Registro de Transportador para Cobrar')
 
-    # Widgets para capturar información del cliente
-    nombre = st.text_input('Nombre del cliente')
-    edad = st.number_input('Edad del cliente', min_value=0, max_value=150, step=1)
-    email = st.text_input('Correo electrónico del cliente')
-    telefono = st.text_input('Teléfono del cliente')
-    direccion = st.text_input('Dirección del cliente')
+    # Campos del formulario
+    nombre = st.text_input('Nombre del transportador')
+    apellido = st.text_input('Apellido del transportador')
+    empresa = st.text_input('Nombre de la empresa')
+    email = st.text_input('Correo electrónico')
+    telefono = st.text_input('Teléfono')
+    direccion = st.text_input('Dirección')
 
     # Botón para enviar los datos
-    if st.button('Enviar'):
-        # Crear un DataFrame con los datos del cliente
-        data = {
-            'Nombre': [nombre],
-            'Edad': [edad],
-            'Email': [email],
-            'Teléfono': [telefono],
-            'Dirección': [direccion]
-        }
-        df = pd.DataFrame(data)
-        # Mostrar el DataFrame generado
-        st.subheader('Datos del Cliente:')
-        st.write(df)
+    if st.button('Registrar'):
+        # Validación de datos (puedes agregar más validaciones según tus necesidades)
+        if nombre and email:
+            # Procesamiento de los datos (aquí puedes agregar el código para cobrar)
+            st.success('¡Datos registrados correctamente!')
+        else:
+            st.error('Por favor completa los campos obligatorios: Nombre y Correo electrónico')
+
+if __name__ == '__main__':
+    main()
