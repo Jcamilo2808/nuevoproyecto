@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import subprocess
 
 def main():
     st.title('Formulario de Información de Clientes')
@@ -12,13 +14,15 @@ def main():
 
     # Botón para enviar los datos
     if st.button('Enviar'):
-        # Mostrar los datos ingresados por el cliente
+        # Crear un DataFrame con los datos del cliente
+        data = {
+            'Nombre': [nombre],
+            'Edad': [edad],
+            'Email': [email],
+            'Teléfono': [telefono],
+            'Dirección': [direccion]
+        }
+        df = pd.DataFrame(data)
+        # Mostrar el DataFrame generado
         st.subheader('Datos del Cliente:')
-        st.write(f'Nombre: {nombre}')
-        st.write(f'Edad: {edad}')
-        st.write(f'Email: {email}')
-        st.write(f'Teléfono: {telefono}')
-        st.write(f'Dirección: {direccion}')
-
-if __name__ == '__main__':
-    main()
+        st.write(df)
